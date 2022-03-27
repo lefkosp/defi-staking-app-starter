@@ -45,11 +45,11 @@ contract Tether {
   }
 
   function transferFrom(address _from, address _to, uint _value) public returns (bool success) {
-    require(_value <= balanceOf[_from]);
-    require(_value <= allowance[msg.sender][_from]);
+    require(_value <= balanceOf[_from], 'reverting: balance check failed');
+    require(_value <= allowance[_from][msg.sender], 'reverting: allowance check failed');
     balanceOf[_to] += _value;
     balanceOf[_from] -= _value;
-    allowance[msg.sender][_from] -= _value;
+    allowance[_from][msg.sender] -= _value;
     emit Transfer(_from, _to, _value);
     return true;
   }
