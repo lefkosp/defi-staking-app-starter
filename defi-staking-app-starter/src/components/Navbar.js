@@ -20,6 +20,9 @@ export default function Navbar(props) {
             ACCOUNT NUMBER: {props.account}
           </small>
         </li>
+        <li>
+          {/* <button onClick={props.connectWallet}>Connect Wallet</button> */}
+        </li>
       </ul>
     </nav>
   );
